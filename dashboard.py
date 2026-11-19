@@ -8,7 +8,9 @@ import datetime
 # 1. 页面设置与美化
 st.set_page_config(page_title="全球乳胶产区天气监控", layout="wide", page_icon="🌍")
 st.title("🌍 全球乳胶产区天气监控大屏")
-st.caption(f"📅 数据更新时间：{datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+# 加上 8 小时变成北京时间
+current_time = datetime.datetime.utcnow() + datetime.timedelta(hours=8)
+st.caption(f"📅 数据更新时间：{current_time.strftime('%Y-%m-%d %H:%M:%S')} (每小时自动刷新)")
 
 # 2. 产区坐标配置
 plantations = [
